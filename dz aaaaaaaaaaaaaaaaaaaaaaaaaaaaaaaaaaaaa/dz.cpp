@@ -3,32 +3,75 @@
 using namespace std;
 
 class matriza {
-    int n=3;
-    int m=4;
-    
-    int min=0;
+    int matrica[3][4];
+    int matrica2[3][4];
+    int min=99;
     int max=0;
     public:
     void vvod () 
     {
-        for (int i = 0; i < n; i++)
+        for (int i = 0; i < 3; i++)
         {
-            for (int j = 0; j < m; j++)
+            for (int j = 0; j < 4; j++)
             {
-                srand(time(NULL));
-                matrica[i][j] = (rand() % 10) + 1;
-                cout<<matrica[i][j];
+                
+                matrica[i][j] = (rand() % 9)+1;
+                cout<<matrica[i][j]<<" ";
             }
             cout<<"\n";
         }
     }
-    void knigiavtora () 
+    void samzapolnaj () 
     {
-        
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 4; j++)
+            {
+                cin>>matrica[i][j];
+                
+            }
+            
+        }
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 4; j++)
+            {
+                cout<<matrica[i][j]<<" ";
+                
+            }
+            cout<<"\n";
+        }
     }
-    void knigiizdatelstva () 
+    void maxminiskat () 
     {
-        
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 4; j++)
+            {
+                if (matrica[i][j]>max)
+                {
+                    max=matrica[i][j];
+                }
+                
+                
+            }
+            
+        }
+        cout<<"max"<<max;
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 4; j++)
+            {
+                if (matrica[i][j]<min)
+                {
+                    min=matrica[i][j];
+                }
+                
+                
+            }
+            
+        }
+        cout<<"min"<<min;
     }
     void godkniga () 
     {
@@ -38,10 +81,11 @@ class matriza {
 
 int main()
 {
+    srand(time(NULL));
     matriza aaaa;
     aaaa.vvod();
-    aaaa.knigiavtora();
-    aaaa.knigiizdatelstva();
+    aaaa.samzapolnaj();
+    aaaa.maxminiskat();
     aaaa.godkniga();
     
     return 0;
