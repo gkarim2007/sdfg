@@ -95,7 +95,7 @@ class matriza {
 {
     for (int j = 0; j < 4; j++)
             {
-                cout<<matrica[j]<<"  ";
+                cout<<matrica[j]<<" ";
             }
             cout<<"\n";
 }
