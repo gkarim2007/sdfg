@@ -2,78 +2,125 @@
 
 using namespace std;
 
-class rabota {
-    int n=3;
-    string *ima=new string[n];
-    int *staj=new int [n];
-    int *zarplata=new int [n];
-    string *doljnost=new string[n];
-    string doljnostvibor;
-    int stajvibor;
-    int zarplatavibor;
+class matriza {
+    int matrica[4];
+    int min=99;
+    int max=0;
+    int chislo;
     public:
     void vvod () 
     {
-        for (int i = 0; i < this->n; i++)
-        {
-        cout<<"имя ";
-        cin>> this->ima[i];
-        cout<<"стаж ";
-        cin>> this->staj[i];
-        cout<<"зарплата ";
-        cin>> this->zarplata[i];
-        cout<<"должность ";
-        cin>> this->doljnost[i];
-        }
-    }
-    void knigiavtora () 
-    {
-        cout<<"stajvibor ";
-        cin>>stajvibor;
-        for (int i = 0; i < this->n; i++)
-        {
-            if(this->stajvibor<this->staj[i])
+        
+            for (int j = 0; j < 4; j++)
             {
-                cout<<this->ima[i];
-                cout<<"\n";
+                
+                matrica[j] = (rand() % 9)+1;
+                
             }
-        }
+            
+        
     }
-    void knigiizdatelstva () 
+    /*void samzapolnaj () 
     {
-        cout<<"zarplatavibor ";
-        cin>>this->zarplatavibor;
-        for (int i = 0; i < this->n; i++)
+        for (int i = 0; i < 3; i++)
         {
-            if(this->zarplatavibor<this->zarplata[i])
+            for (int j = 0; j < 4; j++)
             {
-                cout<<this->ima[i];
-                cout<<"\n";
+                cin>>matrica[i][j];
+                
             }
+            
         }
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 4; j++)
+            {
+                cout<<matrica[i][j]<<" ";
+                
+            }
+            cout<<"\n";
+        }
+    }*/
+    void maxminiskat () 
+    {
+        
+            for (int j = 0; j < 4; j++)
+            {
+                if (matrica[j]>max)
+                {
+                    max=matrica[j];
+                }
+                
+                
+            }
+            
+        
+                cout<<"max"<<max;
+        
+            for (int i = 0; i < 4; i++)
+            {
+                if (matrica[i]<min)
+                {
+                    min=matrica[i];
+                }
+                
+                
+            }
+            
+        
+        cout<<"min"<<min;
+        cout<<"\n";
     }
     void godkniga () 
     {
-        cout<<"doljnostvibor ";
-        cin>>this->doljnostvibor;
-        for (int i = 0; i < this->n; i++)
+        for (int i = 0; i < 4; i++)
         {
-            if(this->doljnostvibor==this->doljnost[i])
+            for (int j = 0; j < 3; j++)
             {
-                cout<<this->ima[i];
-                cout<<"\n";
+                if (matrica[j]>matrica[j+1])
+                {
+                    max=matrica[j];
+                    min=matrica[j+1];
+                    matrica[j]=min;
+                    matrica[j+1]=max;
+                }
+                max=0;
+                min=0;
+                
             }
+            
         }
     }
+    void vivod()
+{
+    for (int j = 0; j < 4; j++)
+            {
+                cout<<matrica[j]<<" ";
+            }
+            cout<<"\n";
+}
+void a () 
+{
+    int indeks;
+    cin >> chislo; 
+    cin>> indeks;
+    matrica[indeks]=chislo;
+}
 };
+
+
 
 int main()
 {
-    rabota aaaa;
+    srand(time(NULL));
+    matriza aaaa;
     aaaa.vvod();
-    aaaa.knigiavtora();
-    aaaa.knigiizdatelstva();
+    aaaa.vivod();
+    aaaa.maxminiskat();
     aaaa.godkniga();
+    aaaa.vivod();
+    aaaa.a();
+    aaaa.vivod();
     
     return 0;
 }
