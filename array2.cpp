@@ -1,43 +1,81 @@
-#include <iostream>
-#include <fstream>
 #include <string>
+#include <iostream>
 using namespace std;
-void infileoutfile(std::string name) {
-    std::ifstream fin;
-    fin.open(name);
-    int stroka;
-    string strokaa;
-    std::string line;
-    std::string buf;
-    int i=0;
+class Calc {
 
 
-    if (fin.is_open()) {
+public:
+    
 
-        while (fin.good()) {
-            
-            std::string line;
-
-            std::getline(fin, line);
-
-            if (i!=stroka) {
-
-                
-                buf=buf+line+"\n";
-            i++;
-            } else {
-                cin>>strokaa
-            }
-            
-        }
-        
-    } else {
-        std::cout << "File not open!!!!\n";
+    virtual void plus(int a, int b) {
+        cout<<(a+b)<<"\n";
     }
-}
+
+    virtual void minus(int a, int b) {
+        cout<<(a-b)<<"\n";
+    }
+
+    // ~Calc() {}
+
+};
+
+class SuperCalc : public Calc {
+
+ public:
+    void mult(int a, int b) { // умножение
+        cout<<(a*b)<<"\n";
+    }
+
+    void div(int a, int b) { // деление
+        cout<<(a/b)<<"\n";
+    }
+
+};
+
+class SaveCalc : public Calc { // сохраняет последнюю операцуию
+
+    
+
+    private:
+    std::string last_operation; // последняя выполненая операция
+
+    public:
+    void plus(int a, int b) {
+        cout<<(a+b)<<"\n";
+        this->last_operation=a+b;
+    }
+
+    void minus(int a, int b) {
+        cout<<(a-b)<<"\n";
+        this->last_operation=a-b;
+    }
+    std::string getLastOperation() {
+        return this->last_operation;
+        
+    }
+
+    // void plus() {...}
+    // void minus() {...}
+
+    // ~SaveCalc() {}
+
+};
 
 int main() {
-    std::string name ="name.txt";
-    infileoutfile(name);
-    return 0;
+    Calc def_calc;
+    SuperCalc super_calc;
+    SaveCalc save_calc;
+
+    def_calc.minus(100, 50);
+    def_calc.plus(5, 7);
+
+    super_calc.minus(10, 8);
+    super_calc.minus(50, 10);
+    super_calc.mult(7, 11);
+    super_calc.div(512, 16);
+
+    save_calc.minus(77, 8);
+    save_calc.plus(8, 60);
+    std::cout << save_calc.getLastOperation() << "\n";
+
 }

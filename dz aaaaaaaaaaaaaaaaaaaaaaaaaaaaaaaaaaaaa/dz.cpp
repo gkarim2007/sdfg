@@ -1,92 +1,72 @@
+
 #include <iostream>
+#include <list>
 
-using namespace std;
+template <typename T>
+class List {
+    struct node {
+        T val;
+        node *next;
+    };
 
-class matriza {
-    int matrica[3][4];
-    int matrica2[3][4];
-    int min=99;
-    int max=0;
-    public:
-    void vvod () 
-    {
-        for (int i = 0; i < 3; i++)
-        {
-            for (int j = 0; j < 4; j++)
-            {
-                
-                matrica[i][j] = (rand() % 9)+1;
-                cout<<matrica[i][j]<<" ";
-            }
-            cout<<"\n";
+    node *head;
+    int size;
+
+ public:
+    List() {}
+    List(const List &other) {}
+
+    List(int size, T val) {
+        this->size = 0;
+        int tmp = size;
+        while (tmp != 0) {
+            add_end(val);
+            --tmp;
         }
     }
-    void samzapolnaj () 
-    {
-        for (int i = 0; i < 3; i++)
-        {
-            for (int j = 0; j < 4; j++)
-            {
-                cin>>matrica[i][j];
-                
-            }
-            
+
+    void print_list() {
+        for (node *i = head; i != nullptr; i = i->next) {
+            std::cout << i->val << " ";
         }
-        for (int i = 0; i < 3; i++)
-        {
-            for (int j = 0; j < 4; j++)
-            {
-                cout<<matrica[i][j]<<" ";
-                
-            }
-            cout<<"\n";
-        }
+        std::cout << "\n";
     }
-    void maxminiskat () 
-    {
-        for (int i = 0; i < 3; i++)
-        {
-            for (int j = 0; j < 4; j++)
-            {
-                if (matrica[i][j]>max)
-                {
-                    max=matrica[i][j];
-                }
-                
-                
+
+    void add_end(const T &val) {
+        if (head == nullptr) {
+            head = new node {val, nullptr};
+        } else {
+            node *i = head;
+            while (i->next != nullptr) {
+                i = i->next;
             }
-            
+            i->next = new node {val, nullptr};
         }
-        cout<<"max"<<max;
-        for (int i = 0; i < 3; i++)
-        {
-            for (int j = 0; j < 4; j++)
-            {
-                if (matrica[i][j]<min)
-                {
-                    min=matrica[i][j];
-                }
-                
-                
-            }
-            
-        }
-        cout<<"min"<<min;
+        this->size += 1;
     }
-    void godkniga () 
-    {
-        
+    void add_golova(const T &val) {
+        if (head == nullptr) {
+            head = new node {val, nullptr};
+        } else {
+            node *i = head;
+            while (i->next != head) {
+                i = i->next;
+            }
+            i->next = new node {val, head};
+        }
+        this->size += 1;
     }
 };
 
-int main()
-{
-    srand(time(NULL));
-    matriza aaaa;
-    aaaa.vvod();
-    aaaa.samzapolnaj();
-    aaaa.maxminiskat();
-    aaaa.godkniga();
+
+
+int main() {
     
+    List<int> my_list(7, 4);
+    my_list.print_list();
+    my_list.add_end(6);
+    my_list.print_list();
+    my_list.add_golova(6);
+    my_list.print_list();
     return 0;
 }

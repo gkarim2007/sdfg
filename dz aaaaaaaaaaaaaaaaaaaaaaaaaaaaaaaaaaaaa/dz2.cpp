@@ -10,6 +10,7 @@ class matriza {
     public:
     void vvod () 
     {
+        fistream arrra;
         
             for (int j = 0; j < 4; j++)
             {
