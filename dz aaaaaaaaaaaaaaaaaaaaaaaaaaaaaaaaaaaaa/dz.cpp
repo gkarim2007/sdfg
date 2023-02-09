@@ -4,50 +4,59 @@
 using namespace std;
 #include <fstream>
 class aaa {
-    string line1=0;
     string line2=0;
-    std::ifstream in ("D:\\name.txt");
     
-    if (in.is_open())
+    ifstream in ("name.txt");
+    std::ofstream out;        
+    out.open("name.txt");
+    void aaa()
+    {
+        if (in.is_open())
     {
         cout << "Hello World!" << std::endl;
     }
     else{
         cout<<"aaa";
     }
-    std::ifstream oout("D:\\aaa.txt");
     
-    if (oout.is_open())
+    
+    }
+    
+    string bratvse()
     {
-        cout << "Hello World!" << std::endl;
-    }
-    else{
-        cout<<"aaa";
-    }
-    getline(in, line1);
-    getline(oout, line2);
-    if(line1==line2)
+        while (getline(oout, line2);)
     {
-        cout<<"a";
+        cout<<line<<"\n";
     }
-
+    }
+    
+    string bratliniju(chislo)
+    {
+        for (int i = 0; i != chislo; ++i)
+        {
+            getline(oout, line2);
+            if (i==chislo)
+            {
+                cout<<line2;
+            }
+            
+        }
+    }     
+string datstroka(chislo)
+    {
+        out<<"ROUDENR";
+    }     
+    string datstroka(chislo)
+    {
+        out<<"ROUDENR";
+    }     
 };
 
 
 
 int main() {
     
-    std::ofstream out; 
- 
-
-    out.open("name.txt"); 
-    
-    if (out.is_open())
-    {
-        cout << "Hello World!" << std::endl;
-    }
-    else{
-        cout<<"aaa";
-    }
+    aaa asasa;
+    asasa.bratliniju;
     return 0;
 }
