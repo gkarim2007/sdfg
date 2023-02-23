@@ -1,87 +1,51 @@
 #include <iostream>
-#include <string>
+#include <memory>
 using namespace std;
 
-template <typename t>
-class massiv {
-    int n;
-    t *arrei;
-    public:
-    massiv ()
-    {
-        cin>>n;
-        arrei=new t [n*2];
-        for (int i = 0; i < n; i++)
-        {
-            cin>>arrei[i];
-            cout<<arrei[i]<<" ";
-        }
-            cout<<"\n";
-    }
-    void dobavitnazad()
-    {
-        cin>>arrei[n];
-        n++;
+template <typename T>
+class Array {
+    std::unique_ptr<T []> array;
+    int size=3;
+    int cap = 100;
 
-        for (int i = 0; i < n; i++)
-        {
-            cout<<arrei[i]<<" ";
-        }
-            cout<<"\n";
+    public:
+    Array() : array(new T[100]) {
+        this->array.get()[0]  = 1;
+        this->array.get()[1]  = 2;
+        this->array.get()[2]  = 3;
+        // this->size
     }
-    void dobavitvpered()
-    {
-        n++;
-        for (int i = n; i > 0; i--)
+    Array(const Array &other) {}
+    Array(int size, T val) {
+
+    } // как пример конструктор от размера и знчения (необязтельно)
+
+
+    void add_end(T val) {
+        size++;
+        
+        array[size-1]=val;
+    } // добавить в начало
+    void add_begin(T val) {} // добавить в конец
+
+    void del_begin() {} // удалить из начала
+    void del_end() {} // удалить из конца
+
+    void print() {
+        for (int i = 0; i < size; i++)
         {
-            arrei[i]=arrei[i-1];
+            cout<<array.get()[i];
             
         }
-        
-        cin>>arrei[0];
-        for (int i = 0; i < n; i++)
-        {
-            
-            cout<<arrei[i]<<" ";
-        }
-            cout<<"\n";
-    }
-    void uniztozitvpered()
-    {
-        n--;
-        
-        for (int i = 0; i < n; i++)
-        {
-            
-            cout<<arrei[i]<<" ";
-        }
-            cout<<"\n";
-    }
-    void uniztozitnazad()
-    {
-        
-        for (int i = 0; i < n; i++)
-        {
-            arrei[i]=arrei[i+1];
-        }
-        n--;
-        
-        for (int i = 0; i < n; i++)
-        {
-            
-            cout<<arrei[i]<<" ";
-        }
-            cout<<"\n";
-    }
+        cout<<"\n";
+    } // вывести массив
+
+    ~Array() {}
 };
 int main() {
-    massiv<int> aaa;
-    aaa.dobavitnazad();
-    aaa.dobavitvpered();
-    aaa.uniztozitnazad();
-
-    aaa.uniztozitvpered();
-    aaa.uniztozitvpered();
-    aaa.uniztozitvpered();
+    Array<int> aaa;
+    aaa.print();
+    aaa.add_end(4);
+    aaa.print();
     return 0;
 }
