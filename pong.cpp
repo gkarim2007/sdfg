@@ -102,7 +102,7 @@ class Pole {
     const int h, w; // h - высота w - длина
     Ball ball;
     Rocket pl_1, pl_2;
-    bool _end = false;z
+    bool _end = false;
 
 
     public:
