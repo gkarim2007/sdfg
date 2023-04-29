@@ -1,67 +1,44 @@
 #include <iostream>
-#include <string>
+
 using namespace std;
-class spravochnik
-{
-    string a;
-    int b;
-    string c;
-    string nazvanije="ROUDENR";
-    int telefon=4258997098;
-    string vladelec="SDFG";
-    string nazvanije2="ROUDENR2";
-    int telefon2=4258997082;
-    string vladelec2="SDFG2";
-    public:
-    void iskatponazvaniju()
-    {
-        cin>>a;
-        if (a==nazvanije)
-        {
-            cout<<telefon<<"\n";
-            cout<<vladelec;
-        }
-        if (a==nazvanije2)
-        {
-            cout<<telefon2<<"\n";
-            cout<<vladelec2;
-        }
-    }
-    void iskatpotelefonu()
-    {
-        cin>>b;
-        if (b==telefon)
-        {
-            cout<<nazvanije<<"\n";
-            cout<<vladelec;
-        }
-        if (b==telefon2)
-        {
-            cout<<nazvanije2<<"\n";
-            cout<<vladelec2;
-        }
-    }
-    void iskatpovladelcu()
-    {
-        cin>> c;
-        if (c==vladelec)
-        {
-            cout<<telefon<<"\n";
-            cout<<nazvanije;
-        }
-        if (c==vladelec2)
-        {
-            cout<<telefon2<<"\n";
-            cout<<nazvanije2;
-        }
-    }
-};
+
+
 
 int main()
 {
-    spravochnik aaa;
-    aaa.iskatponazvaniju();
-    aaa.iskatpotelefonu();
-    aaa.iskatpovladelcu();
-    return 0;
+    int a [3][3]{{8,1,6},{3,5,7},{4,9,2}};
+    int n1=3;
+    int n2=3;
+    int aa=0;
+    for (int i = 0; i < n1; i++)
+    {
+        aa=a[i][0]+a[i][1]+a[i][2];
+        if (aa==(a[i][0]+a[i][1]+a[i][2]))
+        {
+            
+        }
+        else
+        {
+            cout<<"NET";
+            return 0;
+        }
+    }
+    for (int i = 0; i < n2; i++)
+    {
+        if (aa==(a[0][i]+a[1][i]+a[2][i]))
+        {
+            
+        }
+        else
+        {
+            cout<<"NET";
+            return 0;
+        }
+        
+        
+    }
+    
+    cout<<"DA";
+
 }
+
